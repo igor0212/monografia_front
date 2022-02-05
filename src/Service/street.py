@@ -11,7 +11,7 @@ class Street:
         street = st.text_input('Digite uma rua:', '')
         if(street):
             liquidity= round(Partner.get_street_liquidity(street)*100, 3)            
-            st.markdown('A liquidez da rua {} é de **{}**%.'.format(street, liquidity))
+            st.markdown('A liquidez da {} é de **{}**%.'.format(street, liquidity))
             Util.get_map(street)
 
     def page_all():
