@@ -45,8 +45,3 @@ class District:
         })
         graphic = graphic.rename(columns={'date':'index'}).set_index('index')
         st.line_chart(graphic)
-        st.area_chart(graphic)
-        st.bar_chart(graphic)
-
-   
-
