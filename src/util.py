@@ -8,8 +8,9 @@ class Util:
         locator = Nominatim(user_agent="myGeocoder")
         return locator.geocode(search)
 
-    def get_map(address):
+    def get_map(address, zoom=15):
         location = Util.get_location(address)
-        m = folium.Map(location=[location.latitude, location.longitude], zoom_start=15)
-        folium.Marker([location.latitude, location.longitude]).add_to(m)
-        folium_static(m) 
+        if(location):
+            m = folium.Map(location=[location.latitude, location.longitude], zoom_start=zoom)
+            folium.Marker([location.latitude, location.longitude]).add_to(m)
+            folium_static(m) 
