@@ -3,5 +3,8 @@ from util import Util
 
 class Street:    
     def page():
-        st.title('Rua')        
-        Util.get_map('Avenida dos engenheiros')
+        st.title('Rua')    
+        street = ''
+        street = st.text_input('Digite uma rua:', '')
+        if(street):
+            Util.get_map(street)
