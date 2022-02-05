@@ -16,15 +16,30 @@ class Region:
 
     def page_all():
         st.title('Todas as regiões')
-        liquidities= Partner.get_all_region_liquidity()
+        liquidities= Partner.get_all_region_liquidity()        
         matrix = np.array([[0, 0]])
+        list_name = []
+        list_liq = []
         for liquidity in liquidities:
             liq = round(float(liquidity[1])*100,3)
-            row_to_be_added = np.array([liquidity[0], '{}%'.format(liq)])
+            row_to_be_added = np.array([liquidity[0], '{}%'.format(liq)])    
+            list_name.insert(0,liquidity[0])
+            list_liq.insert(0, liq)            
             matrix = np.vstack ((matrix, row_to_be_added))
         matrix_ok = np.delete(matrix, 0, 0)        
-        df = pd.DataFrame(
+
+        #Table
+        table = pd.DataFrame(
             matrix_ok,            
             columns=('Região', 'Liquidez'))
+        st.dataframe(table) 
 
-        st.dataframe(df)
+        #Graphic
+        graphic = pd.DataFrame({
+        'date': list_name,
+        'second column': list_liq
+        })
+        graphic = graphic.rename(columns={'date':'index'}).set_index('index')
+        st.line_chart(graphic)
+        st.area_chart(graphic)
+        st.bar_chart(graphic)
