@@ -8,14 +8,14 @@ class Street:
     def page():
         st.title('Rua')    
         street = ''
-        street = st.text_input('Digite uma rua:', '')
+        street = st.text_input('Digite uma rua de Belo Horizonte:', '')
         if(street):
             liquidity= round(Partner.get_street_liquidity(street)*100, 3)            
             st.markdown('A liquidez da {} é de **{}**%.'.format(street, liquidity))
             Util.get_map(street)
 
     def page_all():
-        st.title('Todas as ruas')
+        st.title('Todas as ruas de Belo Horizonte')
         liquidities= Partner.get_all_street_liquidity()
         matrix = np.array([[0, 0]])
         list_name = []

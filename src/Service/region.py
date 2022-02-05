@@ -8,7 +8,7 @@ class Region:
     def page():
         st.title('Região')    
         region = ''
-        region = st.text_input('Digite uma região:', '')
+        region = st.text_input('Digite uma região de Belo Horizonte:', '')
         if(region):
             liquidity= round(Partner.get_region_liquidity(region)*100, 3)            
             st.markdown('A liquidez da região {} é de **{}**%.'.format(region, liquidity))

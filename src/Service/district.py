@@ -9,14 +9,14 @@ class District:
     def page():
         st.title('Bairro')      
         district = ''
-        district = st.text_input('Digite um bairro:', '')        
+        district = st.text_input('Digite um bairro de Belo Horizonte:', '')        
         if(district):
             liquidity= round(Partner.get_district_liquidity(district)*100, 3)            
             st.markdown('A liquidez do bairro {} é de **{}**%.'.format(district, liquidity))
             Util.get_map(district)  
 
     def page_all():
-        st.title('Todos os bairros')
+        st.title('Todos os bairros de Belo Horizonte')
         liquidities= Partner.get_all_district_liquidity()
         matrix = np.array([[0, 0]])
         list_name = []
