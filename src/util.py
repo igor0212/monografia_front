@@ -8,6 +8,10 @@ class Util:
         locator = Nominatim(user_agent="myGeocoder")
         return locator.geocode(search)
 
+    def get_location2(address):    
+        locator = Nominatim(user_agent="myGeocoder")
+        return locator.geocode(address)
+
     def get_map(address, zoom=15):
         location = Util.get_location(address)
         if(location):
